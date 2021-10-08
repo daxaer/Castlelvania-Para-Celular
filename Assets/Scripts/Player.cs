@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     Rigidbody2D rb;
     [SerializeField, Range(1f, 10f)] float jumpForce = 5f;
     [SerializeField, Range(1f, 10f)] float dashForce = 10f;
+    bool dash = true;
 
     private void Awake()
     {
@@ -45,13 +46,18 @@ public class Player : MonoBehaviour
     }
     void Dash()
     {
-        if(gameObject.GetComponent<SpriteRenderer>().flipX)
+        if(dash)
         {
-            rb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
-        }
-        else
-        {
-            rb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
+            dash = false;
+            StartCoroutine("DashColdDown");
+            if (gameObject.GetComponent<SpriteRenderer>().flipX)
+            {
+                rb.AddForce(Vector2.right * dashForce, ForceMode2D.Impulse);
+            }
+            else
+            {
+                rb.AddForce(Vector2.left * dashForce, ForceMode2D.Impulse);
+            }
         }
     }
     void Shield()
@@ -67,4 +73,10 @@ public class Player : MonoBehaviour
         gameObject.GetComponent<SpriteRenderer>().flipX = true;
     }
     Vector2 Axis => inputActions.Gameplay.Axis.ReadValue<Vector2>();
+    
+    IEnumerator DashColdDown()
+    {
+        yield return new WaitForSeconds(5f);
+        dash = true;
+    }
 }
