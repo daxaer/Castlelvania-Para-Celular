@@ -655,7 +655,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 357258136}
         m_TargetAssemblyTypeName: SceneMan, Assembly-CSharp
-        m_MethodName: GoToCredits
+        m_MethodName: Credits
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -922,7 +922,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 357258136}
         m_TargetAssemblyTypeName: SceneMan, Assembly-CSharp
-        m_MethodName: PlayGame
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1608,7 +1608,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 357258136}
         m_TargetAssemblyTypeName: SceneMan, Assembly-CSharp
-        m_MethodName: GoToMainMenu
+        m_MethodName: MainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
