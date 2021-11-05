@@ -35,31 +35,7 @@ public class @InputController : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Atack"",
-                    ""type"": ""Button"",
-                    ""id"": ""7568261c-84f4-4776-846b-8ee712b85b46"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Dash"",
-                    ""type"": ""Button"",
-                    ""id"": ""7fdb1cf4-ada0-449d-8744-d420959694ca"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""Shield"",
-                    ""type"": ""Button"",
-                    ""id"": ""4d440611-815a-4697-808c-143dfe4ee4d2"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""FlipLeft"",
+                    ""name"": ""Derecha"",
                     ""type"": ""Button"",
                     ""id"": ""c2ef3599-bb43-4e33-b24b-f333c8a38bea"",
                     ""expectedControlType"": ""Button"",
@@ -67,9 +43,25 @@ public class @InputController : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""FlipXRight"",
+                    ""name"": ""Izquierda"",
                     ""type"": ""Button"",
                     ""id"": ""99940e70-f5c0-43bd-929f-94df324de399"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SeleccionarPersonaje"",
+                    ""type"": ""Button"",
+                    ""id"": ""31174e60-12af-460b-b4ae-3bdd89cab348"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Lanzarbjeto"",
+                    ""type"": ""Button"",
+                    ""id"": ""98ac8593-9721-49e7-ab4b-eb1edb692167"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -155,45 +147,12 @@ public class @InputController : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1625ff35-9c39-4b1e-8678-f8fe3162836b"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Atack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""102da6c8-fc6b-49ea-b8d5-4398ec9f3c8a"",
-                    ""path"": ""<Keyboard>/leftShift"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""db436adc-46af-4b82-b2cb-17050cd936ce"",
-                    ""path"": ""<Keyboard>/ctrl"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Shield"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""683a2739-423d-446d-b754-2e7528962fc7"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""FlipLeft"",
+                    ""action"": ""Derecha"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -204,7 +163,29 @@ public class @InputController : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""FlipXRight"",
+                    ""action"": ""Izquierda"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dbed2957-781f-4781-add9-10670399d06e"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SeleccionarPersonaje"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2df97006-ad6b-4020-b192-1a7100b481ac"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Lanzarbjeto"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -217,11 +198,10 @@ public class @InputController : IInputActionCollection, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Axis = m_Gameplay.FindAction("Axis", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
-        m_Gameplay_Atack = m_Gameplay.FindAction("Atack", throwIfNotFound: true);
-        m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
-        m_Gameplay_Shield = m_Gameplay.FindAction("Shield", throwIfNotFound: true);
-        m_Gameplay_FlipLeft = m_Gameplay.FindAction("FlipLeft", throwIfNotFound: true);
-        m_Gameplay_FlipXRight = m_Gameplay.FindAction("FlipXRight", throwIfNotFound: true);
+        m_Gameplay_Derecha = m_Gameplay.FindAction("Derecha", throwIfNotFound: true);
+        m_Gameplay_Izquierda = m_Gameplay.FindAction("Izquierda", throwIfNotFound: true);
+        m_Gameplay_SeleccionarPersonaje = m_Gameplay.FindAction("SeleccionarPersonaje", throwIfNotFound: true);
+        m_Gameplay_Lanzarbjeto = m_Gameplay.FindAction("Lanzarbjeto", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,22 +253,20 @@ public class @InputController : IInputActionCollection, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Axis;
     private readonly InputAction m_Gameplay_Jump;
-    private readonly InputAction m_Gameplay_Atack;
-    private readonly InputAction m_Gameplay_Dash;
-    private readonly InputAction m_Gameplay_Shield;
-    private readonly InputAction m_Gameplay_FlipLeft;
-    private readonly InputAction m_Gameplay_FlipXRight;
+    private readonly InputAction m_Gameplay_Derecha;
+    private readonly InputAction m_Gameplay_Izquierda;
+    private readonly InputAction m_Gameplay_SeleccionarPersonaje;
+    private readonly InputAction m_Gameplay_Lanzarbjeto;
     public struct GameplayActions
     {
         private @InputController m_Wrapper;
         public GameplayActions(@InputController wrapper) { m_Wrapper = wrapper; }
         public InputAction @Axis => m_Wrapper.m_Gameplay_Axis;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
-        public InputAction @Atack => m_Wrapper.m_Gameplay_Atack;
-        public InputAction @Dash => m_Wrapper.m_Gameplay_Dash;
-        public InputAction @Shield => m_Wrapper.m_Gameplay_Shield;
-        public InputAction @FlipLeft => m_Wrapper.m_Gameplay_FlipLeft;
-        public InputAction @FlipXRight => m_Wrapper.m_Gameplay_FlipXRight;
+        public InputAction @Derecha => m_Wrapper.m_Gameplay_Derecha;
+        public InputAction @Izquierda => m_Wrapper.m_Gameplay_Izquierda;
+        public InputAction @SeleccionarPersonaje => m_Wrapper.m_Gameplay_SeleccionarPersonaje;
+        public InputAction @Lanzarbjeto => m_Wrapper.m_Gameplay_Lanzarbjeto;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -304,21 +282,18 @@ public class @InputController : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnJump;
-                @Atack.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAtack;
-                @Atack.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAtack;
-                @Atack.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnAtack;
-                @Dash.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
-                @Dash.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
-                @Dash.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDash;
-                @Shield.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShield;
-                @Shield.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShield;
-                @Shield.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnShield;
-                @FlipLeft.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFlipLeft;
-                @FlipLeft.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFlipLeft;
-                @FlipLeft.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFlipLeft;
-                @FlipXRight.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFlipXRight;
-                @FlipXRight.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFlipXRight;
-                @FlipXRight.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnFlipXRight;
+                @Derecha.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDerecha;
+                @Derecha.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDerecha;
+                @Derecha.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDerecha;
+                @Izquierda.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnIzquierda;
+                @Izquierda.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnIzquierda;
+                @Izquierda.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnIzquierda;
+                @SeleccionarPersonaje.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSeleccionarPersonaje;
+                @SeleccionarPersonaje.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSeleccionarPersonaje;
+                @SeleccionarPersonaje.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSeleccionarPersonaje;
+                @Lanzarbjeto.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLanzarbjeto;
+                @Lanzarbjeto.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLanzarbjeto;
+                @Lanzarbjeto.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnLanzarbjeto;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -329,21 +304,18 @@ public class @InputController : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Atack.started += instance.OnAtack;
-                @Atack.performed += instance.OnAtack;
-                @Atack.canceled += instance.OnAtack;
-                @Dash.started += instance.OnDash;
-                @Dash.performed += instance.OnDash;
-                @Dash.canceled += instance.OnDash;
-                @Shield.started += instance.OnShield;
-                @Shield.performed += instance.OnShield;
-                @Shield.canceled += instance.OnShield;
-                @FlipLeft.started += instance.OnFlipLeft;
-                @FlipLeft.performed += instance.OnFlipLeft;
-                @FlipLeft.canceled += instance.OnFlipLeft;
-                @FlipXRight.started += instance.OnFlipXRight;
-                @FlipXRight.performed += instance.OnFlipXRight;
-                @FlipXRight.canceled += instance.OnFlipXRight;
+                @Derecha.started += instance.OnDerecha;
+                @Derecha.performed += instance.OnDerecha;
+                @Derecha.canceled += instance.OnDerecha;
+                @Izquierda.started += instance.OnIzquierda;
+                @Izquierda.performed += instance.OnIzquierda;
+                @Izquierda.canceled += instance.OnIzquierda;
+                @SeleccionarPersonaje.started += instance.OnSeleccionarPersonaje;
+                @SeleccionarPersonaje.performed += instance.OnSeleccionarPersonaje;
+                @SeleccionarPersonaje.canceled += instance.OnSeleccionarPersonaje;
+                @Lanzarbjeto.started += instance.OnLanzarbjeto;
+                @Lanzarbjeto.performed += instance.OnLanzarbjeto;
+                @Lanzarbjeto.canceled += instance.OnLanzarbjeto;
             }
         }
     }
@@ -352,10 +324,9 @@ public class @InputController : IInputActionCollection, IDisposable
     {
         void OnAxis(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnAtack(InputAction.CallbackContext context);
-        void OnDash(InputAction.CallbackContext context);
-        void OnShield(InputAction.CallbackContext context);
-        void OnFlipLeft(InputAction.CallbackContext context);
-        void OnFlipXRight(InputAction.CallbackContext context);
+        void OnDerecha(InputAction.CallbackContext context);
+        void OnIzquierda(InputAction.CallbackContext context);
+        void OnSeleccionarPersonaje(InputAction.CallbackContext context);
+        void OnLanzarbjeto(InputAction.CallbackContext context);
     }
 }

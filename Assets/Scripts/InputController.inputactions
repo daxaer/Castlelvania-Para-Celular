@@ -22,31 +22,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "Atack",
-                    "type": "Button",
-                    "id": "7568261c-84f4-4776-846b-8ee712b85b46",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Dash",
-                    "type": "Button",
-                    "id": "7fdb1cf4-ada0-449d-8744-d420959694ca",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "Shield",
-                    "type": "Button",
-                    "id": "4d440611-815a-4697-808c-143dfe4ee4d2",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
-                },
-                {
-                    "name": "FlipLeft",
+                    "name": "Derecha",
                     "type": "Button",
                     "id": "c2ef3599-bb43-4e33-b24b-f333c8a38bea",
                     "expectedControlType": "Button",
@@ -54,9 +30,25 @@
                     "interactions": ""
                 },
                 {
-                    "name": "FlipXRight",
+                    "name": "Izquierda",
                     "type": "Button",
                     "id": "99940e70-f5c0-43bd-929f-94df324de399",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SeleccionarPersonaje",
+                    "type": "Button",
+                    "id": "31174e60-12af-460b-b4ae-3bdd89cab348",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Lanzarbjeto",
+                    "type": "Button",
+                    "id": "98ac8593-9721-49e7-ab4b-eb1edb692167",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -142,45 +134,12 @@
                 },
                 {
                     "name": "",
-                    "id": "1625ff35-9c39-4b1e-8678-f8fe3162836b",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Atack",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "102da6c8-fc6b-49ea-b8d5-4398ec9f3c8a",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Dash",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "db436adc-46af-4b82-b2cb-17050cd936ce",
-                    "path": "<Keyboard>/ctrl",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Shield",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "683a2739-423d-446d-b754-2e7528962fc7",
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FlipLeft",
+                    "action": "Derecha",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -191,7 +150,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "FlipXRight",
+                    "action": "Izquierda",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dbed2957-781f-4781-add9-10670399d06e",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SeleccionarPersonaje",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2df97006-ad6b-4020-b192-1a7100b481ac",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Lanzarbjeto",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
