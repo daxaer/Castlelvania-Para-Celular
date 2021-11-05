@@ -9,10 +9,10 @@ public class proyectiles : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        /*if (CompareTag("Unidad"))
+        if (collision.gameObject.CompareTag("Unidad")) // cambiarlo a player
         {
-            collision.gameObject.GetComponent<Player>().BajarVida(daño);
-        }*/
+          collision.gameObject.GetComponent<Player>().BajarVida(daño);
+        }
     }
     private void OnMouseDown()
     {
