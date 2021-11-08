@@ -6,15 +6,16 @@ public class Player : MonoBehaviour
 {
     [SerializeField, Range(1f, 10f)] float jumpForce = 5f;
     [SerializeField] private int personaje = 0;
-    [SerializeField] private GameObject proyectil;
     [SerializeField] private Transform mira;
     [SerializeField] private Camera camara;
+    [SerializeField] private GameObject[] proyectil;
     InputController inputActions;
     Rigidbody2D rb;
     float fuerzaTirarObjeto = 20;
     int personajeEscogido = 0;
     int vida = 20;
-    bool proyectileLanzado;
+    bool proyectilRecogido;
+    int proyectileID;
 
     private void Awake()
     {
@@ -40,7 +41,7 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        if (personaje == personajeEscogido && proyectileLanzado == false)
+        if (personaje == personajeEscogido && proyectilRecogido == false)
         {
             transform.Translate(Axis * 5F * Time.deltaTime);
         }
@@ -67,7 +68,6 @@ public class Player : MonoBehaviour
         }
     }
     Vector2 Axis => inputActions.Gameplay.Axis.ReadValue<Vector2>();
-
     public void BajarVida(int daño)
     {
         vida = vida - daño;
@@ -77,13 +77,12 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
     public void LanzarProyectil()
     {
-        if (personaje == personajeEscogido && proyectileLanzado == false)
+        if (personaje == personajeEscogido && proyectilRecogido == true)
         {
-            proyectileLanzado = true;
-            GameObject nuevoProyectil =  Instantiate(proyectil, mira.transform.position, Quaternion.identity);
+            proyectilRecogido = false;
+            GameObject nuevoProyectil =  Instantiate(proyectil[proyectileID], mira.transform.position, Quaternion.identity);
             fuerzaTirarObjeto = Random.Range(30, 60);
             Vector2 dir = (mira.position - transform.position).normalized;
 
@@ -93,12 +92,11 @@ public class Player : MonoBehaviour
         }
         StartCoroutine(SeguimientoCamara());
     }
-
     IEnumerator SeguimientoCamara()
     {
         Debug.Log("Corrutina");
         yield return new WaitForSeconds(8f);
-        proyectileLanzado = false;
+        proyectilRecogido = false;
         SelecionarPersonaje();
     }
 
@@ -116,7 +114,6 @@ public class Player : MonoBehaviour
     }
     void SelecionarPersonaje()
     {
-
         personajeEscogido++;
 
         if (personajeEscogido == 2)
@@ -126,5 +123,34 @@ public class Player : MonoBehaviour
         Debug.Log("Seleccion" + personajeEscogido);
 
         PosicionarCamara();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Proyectile")) // cambiarlo a player
+        {
+            BajarVida(collision.gameObject.GetComponent<proyectiles>().HacerDaño());
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Proyectile")) // cambiarlo a player
+        {
+            collision.gameObject.GetComponent<proyectiles>().SetDistancia(true);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Proyectile")) // cambiarlo a player
+        {
+            collision.gameObject.GetComponent<proyectiles>().SetDistancia(false);
+        }
+    }
+    public void SetProyectile(bool recoger)
+    {
+        proyectilRecogido = recoger;
     }
 }

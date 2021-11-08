@@ -6,16 +6,44 @@ using UnityEngine.EventSystems;
 public class proyectiles : MonoBehaviour
 {
     [SerializeField] private int daño;
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    [SerializeField] private int identificador;
+    bool cambiarColor = false;
+    bool distancia = false;
+    [SerializeField] private GameObject player;
+    int proyectileID;
+    public void MouseIn()
     {
-        if (collision.gameObject.CompareTag("Unidad")) // cambiarlo a player
+        cambiarColor = true;
+        if(cambiarColor && distancia)
         {
-          collision.gameObject.GetComponent<Player>().BajarVida(daño);
+            GetComponent<SpriteRenderer>().material.color = Color.red;
         }
     }
-    private void OnMouseDown()
+    public void MouseExit()
     {
-        Destroy(gameObject);
+        cambiarColor = false;
+        if (cambiarColor==false)
+        {
+            GetComponent<SpriteRenderer>().material.color = Color.white;
+        }
+    }
+    public void MouseClick()
+    {
+        if (cambiarColor && distancia)
+        {
+            Destroy(gameObject);
+        }
+    }
+    public int HacerDaño()
+    {
+        return daño;
+    }
+    public int SetProyectileID()
+    {
+        return daño;
+    }
+    public void SetDistancia(bool check)
+    {
+        distancia = check;
     }
 }
