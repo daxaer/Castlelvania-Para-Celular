@@ -1,21 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField, Range(1f, 10f)] float jumpForce = 5f;
     [SerializeField] private int personaje = 0;
     [SerializeField] private Transform mira;
+    [SerializeField] private Transform flecha;
     [SerializeField] private Camera camara;
     [SerializeField] private GameObject[] proyectil;
+    [SerializeField] int turno;
+    [SerializeField] int turnoActual;
     InputController inputActions;
     Rigidbody2D rb;
-    float fuerzaTirarObjeto = 20;
     int personajeEscogido = 0;
     int vida = 20;
     bool proyectilRecogido;
     int proyectileID;
+
+    [SerializeField] private Image barraVida1;
+    [SerializeField] private Image barraVida2;
+    int vida1;
+    int vida2;
+    int maxvida1 = 20;
+    int maxvida2 = 20;
+    [SerializeField] private int equipo;
 
     private void Awake()
     {
@@ -37,80 +48,54 @@ public class Player : MonoBehaviour
         inputActions.Gameplay.Derecha.performed += _ => Derecha();
         inputActions.Gameplay.Izquierda.performed += _ => Izquierda();
         inputActions.Gameplay.SeleccionarPersonaje.performed += _ => SelecionarPersonaje();
-        inputActions.Gameplay.Lanzarbjeto.performed += _ => LanzarProyectil();
     }
     private void Update()
     {
         if (personaje == personajeEscogido && proyectilRecogido == false)
         {
             transform.Translate(Axis * 5F * Time.deltaTime);
+            //camara.transform.position = transform.position + new Vector3(0, 10,-10);
         }
     }
     void Jump()
     {
-        if (personaje == personajeEscogido)
+        if (personaje == personajeEscogido && proyectilRecogido == false)
         {
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
     void Derecha()
     {
-        if(personaje == personajeEscogido)
+        if(personaje == personajeEscogido && proyectilRecogido == false)
         {
             transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+            flecha.position = mira.position;
         }
     }
     void Izquierda()
     {
-        if(personaje == personajeEscogido)
+        if(personaje == personajeEscogido && proyectilRecogido == false)
         {
             transform.localScale = new Vector3(-0.2f, 0.2f, 0.2f);
+            flecha.position = mira.position;
         }
     }
     Vector2 Axis => inputActions.Gameplay.Axis.ReadValue<Vector2>();
+
+
+    //////////////////////////////////VIDA/////////////////////////
     public void BajarVida(int daño)
     {
         vida = vida - daño;
-        Debug.Log("vida" + vida);
         if(vida==0)
         {
             Destroy(gameObject);
         }
     }
-    public void LanzarProyectil()
-    {
-        if (personaje == personajeEscogido && proyectilRecogido == true)
-        {
-            proyectilRecogido = false;
-            GameObject nuevoProyectil =  Instantiate(proyectil[proyectileID], mira.transform.position, Quaternion.identity);
-            fuerzaTirarObjeto = Random.Range(30, 60);
-            Vector2 dir = (mira.position - transform.position).normalized;
-
-            nuevoProyectil.GetComponent<Rigidbody2D>().AddForce(fuerzaTirarObjeto * dir, ForceMode2D.Impulse);
-            camara.transform.position = nuevoProyectil.transform.position + new Vector3(0, 0, -20f);
-            camara.transform.SetParent(nuevoProyectil.transform);
-        }
-        StartCoroutine(SeguimientoCamara());
-    }
-    IEnumerator SeguimientoCamara()
-    {
-        Debug.Log("Corrutina");
-        yield return new WaitForSeconds(8f);
-        proyectilRecogido = false;
-        SelecionarPersonaje();
-    }
-
+    //////////////////////////////////TURNO/////////////////////////
     public void PosicionarCamara()
     {
-        Debug.Log("Personaje" + personaje + "PersonajeEscogido" + personajeEscogido );
 
-        if (personaje == personajeEscogido)
-        {
-            Debug.Log("posicionCorrecta");
-
-            camara.transform.position = gameObject.transform.position + new Vector3(0, 0, -20f);
-            camara.transform.SetParent(gameObject.transform);
-        }
     }
     void SelecionarPersonaje()
     {
@@ -126,7 +111,7 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Proyectile")) // cambiarlo a player
+        if (collision.gameObject.CompareTag("Proyectile") && turno != turnoActual ) // cambiarlo a player
         {
             BajarVida(collision.gameObject.GetComponent<proyectiles>().HacerDaño());
         }
@@ -149,8 +134,17 @@ public class Player : MonoBehaviour
             collision.gameObject.GetComponent<proyectiles>().SetDistancia(false);
         }
     }
-    public void SetProyectile(bool recoger)
+    public void SetVida()
     {
-        proyectilRecogido = recoger;
+        if (equipo == 1)
+        {
+            vida1 = Mathf.Clamp(vida1, 0, maxvida1);
+            barraVida1.fillAmount = vida1 / 20;
+        }
+        if (equipo == 2)
+        {
+            vida2 = Mathf.Clamp(vida1, 0, maxvida2);
+            barraVida2.fillAmount = vida2 / 100;
+        }
     }
 }

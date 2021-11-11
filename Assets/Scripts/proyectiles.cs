@@ -11,6 +11,16 @@ public class proyectiles : MonoBehaviour
     bool distancia = false;
     [SerializeField] private GameObject player;
     int proyectileID;
+
+    Rigidbody2D rb;
+    public float AliveTime = 8;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        Destroy(gameObject, AliveTime);
+        rb.AddForce(transform.up * (70f / 2), ForceMode2D.Impulse);
+    }
     public void MouseIn()
     {
         cambiarColor = true;
@@ -45,5 +55,9 @@ public class proyectiles : MonoBehaviour
     public void SetDistancia(bool check)
     {
         distancia = check;
+    }
+    public void Initialize(int power)
+    {
+        rb.AddForce(transform.right * (30f / 2), ForceMode2D.Impulse);
     }
 }

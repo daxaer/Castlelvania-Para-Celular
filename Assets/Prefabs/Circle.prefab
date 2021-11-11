@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 234452586837824693}
   - component: {fileID: 234452586837824694}
   - component: {fileID: 234452586837824695}
+  - component: {fileID: -8705795427361656049}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -104,7 +105,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!58 &234452586837824695
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -121,3 +122,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &-8705795427361656049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234452586837824688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1366416fb2ef6642bd088b6b4c4446b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "da\xF1o": 5
+  identificador: 0
+  player: {fileID: 7253289301395430986, guid: 8bdb0d0d9e2669e449534545d714e085, type: 3}
+  AliveTime: 8

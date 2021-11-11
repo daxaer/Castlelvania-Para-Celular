@@ -144,7 +144,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
 --- !u!114 &5898934605904354250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +159,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   "da\xF1o": 2
   identificador: 0
-  player: {fileID: 0}
+  player: {fileID: 7253289301395430986, guid: 8bdb0d0d9e2669e449534545d714e085, type: 3}
+  AliveTime: 5
 --- !u!114 &7610241605637988829
 MonoBehaviour:
   m_ObjectHideFlags: 0
